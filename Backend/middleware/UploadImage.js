@@ -14,10 +14,12 @@ const storage = multer.diskStorage({
     },
     filename : (req, file, callback)=>{
         callback(null, file.fieldname+'-'+Date.now()+ path.extname(file.originalname))
+        // console.log(file.filename)
     },
-    limits : {
-        fileSize : 100*100
-    }
+    // limits : {
+    //     fileSize : 100*100
+    // }
 })
 
-module.exports = ({storage : storage})
+const upload = multer({storage : storage})
+module.exports = upload
